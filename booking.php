@@ -99,6 +99,204 @@ $user_dashboard = "user_dashboard.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Ground</title>
     <link rel="stylesheet" href="css/bookings.css">
+    <style>
+        /* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-size: 2em;
+}
+
+/* Container styling */
+.booking-container {
+    max-width: 80%;
+    background-color: #ffffff;
+    margin: 20px auto;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Image styling */
+.ground-image {
+    flex: 1;
+    max-width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form styling */
+.booking-form {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.booking-form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #555;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="tel"],
+.booking-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.booking-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #008080;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.booking-form button:hover {
+    background-color: #006666;
+}
+
+/* Message styling */
+.message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+    .booking-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .ground-image, .booking-form {
+        max-width: 100%;
+    }
+    
+    /* Reduced button size for smaller screens */
+    .booking-form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .booking-form button {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    /* Ensure buttons fit in a single row */
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    /* Reduce button size to fit in row */
+    .button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Reset some basic styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar div p {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-top: 80px; /* Offset for fixed navbar */
+}
+
+/* Button styling */
+.button {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #008080;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for the page content */
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+    </style>
 </head>
 <body>
 <div>
@@ -108,7 +306,7 @@ $user_dashboard = "user_dashboard.php";
         </div>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="<?php echo $user_dashboard; ?>" class="button">User Dashboard</a>
+        <a href="<?php echo $user_dashboard; ?>" class="button">Dashboard</a>
         <a href="index.php" class="button">Home</a>
         <a href="logout.php" class="button">Logout</a>
     </nav>

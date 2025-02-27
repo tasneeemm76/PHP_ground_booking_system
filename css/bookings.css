@@ -1,4 +1,4 @@
-
+/* Base styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -86,6 +86,13 @@ h1 {
 }
 
 /* Responsive layout */
+@media (max-width: 1024px) {
+    .booking-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+}
+
 @media (max-width: 768px) {
     .booking-container {
         flex-direction: column;
@@ -97,29 +104,44 @@ h1 {
     }
 }
 
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .booking-form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /* Reset some basic styling */
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 /* Navbar styling */
 .navbar {
-display: flex;
-justify-content: flex-end;
-align-items: center;
-background-color: #333;
-padding: 10px 20px;
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
-/* Style for the welcome message */
-nav div:first-child p {
+.navbar div p {
     margin: 0;
     color: white;
     font-size: 18px;
@@ -128,33 +150,30 @@ nav div:first-child p {
 
 /* Header styling */
 header {
-text-align: center;
-margin-top: 80px; /* Add margin to offset fixed navbar */
+    text-align: center;
+    margin-top: 80px; /* Offset for fixed navbar */
 }
-
-
 
 /* Button styling */
 .button {
-display: inline-block;
-margin: 0 10px;
-padding: 10px 20px;
-text-decoration: none;
-color: #fff;
-background-color: #008080;
-border-radius: 5px;
-font-weight: bold;
-transition: background-color 0.3s;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #008080;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .button:hover {
-background-color: #0056b3;
+    background-color: #0056b3;
 }
 
-/* Styling for the page content */
+/* Page content styling */
 .content {
-padding: 20px;
-max-width: 800px;
-margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
-

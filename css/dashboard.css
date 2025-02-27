@@ -1,210 +1,134 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    gap: 20px;
 }
 
-/* Center the heading */
-.header {
-    width: 100%;
+/* Heading Styles */
+.heading h1 {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
+    color: #333;
     font-size: 2em;
-    color: #008080;
+    margin: 20px 0;
 }
 
-
-/* Main content layout */
-.left-column, .right-column {
+/* Left Column Styles */
+.left-column {
     flex: 1;
     padding: 20px;
-}
-
-.left-column {
-    width: 100%;
-    max-width: 300px;
-    margin-right: 20px;
-}
-
-.right-column {
-    flex-grow: 2;
-    width: 100%;
-    overflow-x: auto;
-}
-
-/* Filter Section */
-h2, h3 {
-    color: #008080;
-    margin-bottom: 10px;
-}
-
-form {
     background-color: #ffffff;
-    padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
 }
 
-label {
-    display: block;
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
     font-weight: bold;
-    margin: 8px 0 5px;
+    color: #555;
 }
 
-input[type="date"], select, input[type="text"], button {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
+form input[type="date"],
+form select {
+    padding: 10px;
+    font-size: 1em;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 10px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1em;
 }
 
-button {
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+form button:hover {
+    background-color: #0056b3;
 }
 
-button:hover {
-    background-color: #006666;
+/* Right Column (Table) Styles */
+.right-column {
+    flex: 2;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.success-message, .error-message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.success-message {
-    background-color: #e0f8e9;
-    color: #28a745;
-}
-
-.error-message {
-    background-color: #fde8e8;
-    color: #dc3545;
-}
-
-/* Bookings Table */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
-thead th {
-    background-color: #008080;
-    color: #fff;
+table th,
+table td {
     padding: 10px;
     text-align: left;
-    font-size: 1em;
-}
-
-tbody td {
-    background-color: #fff;
-    padding: 10px;
     border-bottom: 1px solid #ddd;
-    font-size: 0.9em;
 }
 
-tbody tr:nth-child(even) {
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Actions Button */
-button[onclick^="deleteBooking"] {
+/* Message Styles */
+.success-message,
+.error-message {
+    padding: 15px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.success-message {
+    background-color: #28a745;
+}
+
+.error-message {
     background-color: #dc3545;
-    font-size: 0.9em;
+}
+
+/* Toggle Date-Time Selection */
+#date-time-selection {
+    display: none;
+}
+
+/* Action Button in Table */
+table button {
     padding: 5px 10px;
-}
-
-button[onclick^="deleteBooking"]:hover {
-    background-color: #c82333;
+    font-size: 0.9em;
     color: #fff;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        padding: 0 15px;
-    }
-
-    .left-column {
-        margin-right: 0;
-        max-width: 100%;
-    }
-
-    .right-column {
-        max-width: 100%;
-    }
-
-    table thead {
-        display: none;
-    }
-
-    table, tbody, tr, td {
-        display: block;
-        width: 100%;
-    }
-
-    tbody tr {
-        margin-bottom: 10px;
-    }
-
-    tbody td {
-        padding: 10px;
-        text-align: right;
-        position: relative;
-    }
-
-    tbody td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: bold;
-        text-transform: capitalize;
-    }
-}
-
-/* Additional Styling */
-#date-time-selection, #filter-form {
-    background-color: #ffffff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-#booking-table-body {
-    display: block;
-    max-height: 400px;
-    overflow-y: auto;
+table button:hover {
+    background-color: #c82333;
 }

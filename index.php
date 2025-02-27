@@ -95,8 +95,8 @@ session_start();
         /* Reset styling for nav */
 nav {
     width: 100%;
-    background-color: #008080;
-        display: flex;
+    background-color:rgb(255, 255, 255);
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
@@ -106,14 +106,14 @@ nav {
 /* Style for the welcome message */
 nav div:first-child p {
     margin: 0;
-    color: white;
+    color: black;
     font-size: 18px;
     font-weight: bold;
 }
 
 /* Styling for nav links */
 nav div:last-child a {
-    color: white;
+    color: black;
     text-decoration: none;
     margin: 0 10px;
     font-size: 16px;
@@ -147,7 +147,22 @@ h1 {
     }
 }
 
-         
+.banner {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+            background: url('images/turf_banner.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay-text {
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }       
     </style>
 </head>
 <body>
@@ -158,13 +173,15 @@ h1 {
             <?php endif; ?>
         </div>
         <div>
-            <a href="user_dashboard.php" style="color: white; text-decoration: none; margin-right: 10px;">My bookings</a>
-            <a href="logout.php" style="color: white; text-decoration: none;">Logout</a>
+            <a href="user_dashboard.php" >My bookings</a>
+            <a href="logout.php" >Logout</a>
         </div>
     </nav>
 
-    <h1 style="text-align: center; font-family: Arial, sans-serif;">Sports Hub</h1>
-    <div class="container">
+    <div class="banner">
+        <div class="overlay-text">Sports Ground</div>
+    </div>
+        <div class="container">
         <!-- Cricket Ground -->
         <div class="ground-box">
             <img src="images/cricket.jpg" alt="Cricket Ground">

@@ -53,60 +53,142 @@ if (isset($_GET['delete'])) {
     <meta charset="UTF-8">
     <title>User Dashboard</title>
     <style>
-        /* Navbar styling */
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            background-color: #333;
-            padding: 10px;
-        }
-        nav a {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
+      /* Navbar styling */
+nav {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #333;
+    padding: 10px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
 
-        /* Header styling */
-        header {
-            padding: 20px;
-            text-align: center;
-            background-color: #f4f4f4;
-            font-size: 24px;
-            font-weight: bold;
-        }
+nav a {
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 1em;
+}
 
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
+nav a:hover {
+    background-color: #555;
+}
 
-        /* Message styling */
-        .message {
-            color: green;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .error {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-    </style>
+/* Header styling */
+header {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Message styling */
+.message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    nav {
+        justify-content: center; /* Center align links on smaller screens */
+    }
+    
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    header {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    table {
+        display: block;
+        font-size: 1em;
+    }
+
+    /* Make each table row a block */
+    tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    /* Hide table headers */
+    thead {
+        display: none;
+    }
+
+    /* Style each table cell as a separate row with a label */
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    /* Label for each cell on mobile */
+    td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 18px;
+    }
+
+    nav a {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+
+    table, th, td {
+        font-size: 0.85em;
+    }
+}
+
+       </style>
 </head>
 <body>
     <nav>
@@ -127,24 +209,24 @@ if (isset($_GET['delete'])) {
         <tr>
             <th>Ground Name</th>
             <th>User Name</th>
-            <th>Contact Number</th>
             <th>Date</th>
             <th>Time Slot</th>
             <th>Action</th>
         </tr>
+        <tbody id="booking-table-body">
         <?php if (count($bookings) > 0): ?>
             <?php foreach ($bookings as $booking): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($booking['ground_name']); ?></td>
-                    <td><?php echo htmlspecialchars($booking['user_name']); ?></td>
-                    <td><?php echo htmlspecialchars($booking['contact_number']); ?></td>
-                    <td><?php echo htmlspecialchars($booking['date']); ?></td>
-                    <td><?php echo htmlspecialchars($booking['time_slot']); ?></td>
-                    <td>
+                    <td data-label="Ground Name"><?php echo htmlspecialchars($booking['ground_name']); ?></td>
+                    <td data-label="User Name"><?php echo htmlspecialchars($booking['user_name']); ?></td>
+                    <td data-label="Date"><?php echo htmlspecialchars($booking['date']); ?></td>
+                    <td data-label="Time Slot"><?php echo htmlspecialchars($booking['time_slot']); ?></td>
+                    <td data-label="Actions">
                         <a href="user_dashboard.php?delete=<?php echo $booking['id']; ?>" onclick="return confirm('Are you sure you want to delete this booking?');">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
+            </tbody>
         <?php else: ?>
             <tr>
                 <td colspan="6">No bookings found.</td>

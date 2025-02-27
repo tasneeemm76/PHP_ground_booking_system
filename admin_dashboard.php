@@ -218,8 +218,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     
-<div class="container">
-   
+
+   <div class="heading">
+    <h1> admin dashboard</h1>
+    </div>
+    <div class="container">
 <div class="left-column">
 
 
